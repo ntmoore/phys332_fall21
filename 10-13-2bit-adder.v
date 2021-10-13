@@ -4,7 +4,10 @@
 // code is initially broken.  See attached photos for intended design
 
 module example1(
+    //Need to declare four switches
     input [3:0] swt,
+    //Need to declare three LED's to match global outputs 
+
     output [2:0] led
     );
     wire a1, a0, b1, b0;
