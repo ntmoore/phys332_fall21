@@ -33,6 +33,6 @@ module fulladder(
     output c_out
     output sum
     );
-    assign c_out = ;
-    assign sum = ;
+    assign c_out = (a & b) | (a & c_in) | (b & c_in);
+    assign sum = (~a & ~b & c) | (~a & b & ~c) | (a & b & c) | (a & ~b & ~c);
 endmodule
