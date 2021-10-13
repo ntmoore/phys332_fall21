@@ -11,7 +11,8 @@ module example1(
     output [2:0] led
     );
     wire a1, a0, b1, b0;
-    wire s1, s0, cout, c_out;
+    wire s1, s0, cout;
+    wire c_mid; // intermedite wire
     
     // global inputs
     assign a0 = SW[0];
@@ -24,8 +25,8 @@ module example1(
     assign led[1] = s1;
     assign led[2] = cout;
     
-    fulladder add0(a0, b0, 0, c_out, s0);
-    fulladder add1(a1, b1, c_out, cout, s1);
+    fulladder add0(a0, b0, 0, c_mid, s0);
+    fulladder add1(a1, b1, c_mid, cout, s1);
         
 endmodule 
 
