@@ -24,8 +24,8 @@ module example1(
     assign led[1] = s1;
     assign led[2] = cout;
     
-    fulladder add0(a0,b0,0, c_out, s0);
-    fulladder add1(a1,b1,c_out, cout, s1);
+    fulladder add0(a0, b0, 0, c_out, s0);
+    fulladder add1(a1, b1, c_out, cout, s1);
         
 endmodule 
 
