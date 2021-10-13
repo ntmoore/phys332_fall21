@@ -5,7 +5,9 @@
 
 module example1(
     input [1:0] swt,
-    output [1:0] led
+    
+    //Need to declare three LED's to match global outputs 
+    output [2:0] led
     );
     wire a1, a0, b1, b0;
     wire s1, s0, cout;
