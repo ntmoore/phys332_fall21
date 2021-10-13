@@ -5,7 +5,7 @@
 
 module example1(
     //Need to declare four switches
-    input [3:0] swt,
+    input [3:0] SW,
     //Need to declare three LED's to match global outputs 
 
     output [2:0] led
@@ -14,7 +14,7 @@ module example1(
     wire s1, s0, cout, c_out;
     
     // global inputs
-    assign a0 = swt[0];
+    assign a0 = SW[0];
     assign a1 = swt[1];
     assign b0 = swt[2];
     assign b1 = swt[3];
