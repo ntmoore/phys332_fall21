@@ -5,7 +5,8 @@
 
 module example1(
     input [1:0] swt,
-    output [1:0] led
+    // need to have three leds to match global ouptuts 
+    output [2:0] led
     );
     wire a1, a0, b1, b0;
     wire s1, s0, cout;
@@ -21,8 +22,8 @@ module example1(
     assign led[1] = s1;
     assign led[2] = cout;
     
-    fulladder add0(a,b,c_in, c_out, s1);
-    fulladder add1(a,b,c_in, cout, s1);
+    fulladder a0(a,b,c_in, cout, s1);
+    fulladder a1(a,b,c_in, cout, s1);
         
 endmodule 
 
