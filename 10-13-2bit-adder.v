@@ -4,9 +4,10 @@
 // code is initially broken.  See attached photos for intended design
 
 module example1(
-    input [1:0] swt,
-    
+    //Need to declare four switches
+    input [3:0] swt,
     //Need to declare three LED's to match global outputs 
+
     output [2:0] led
     );
     wire a1, a0, b1, b0;
@@ -14,9 +15,9 @@ module example1(
     
     // global inputs
     assign a0 = swt[0];
-    assign a1 = swt[0];
-    assign b0 = swt[0];
-    assign b1 = swt[0];
+    assign a1 = swt[1];
+    assign b0 = swt[2];
+    assign b1 = swt[3];
     
     // global outputs
     assign led[0] = s0;
