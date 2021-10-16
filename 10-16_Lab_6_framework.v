@@ -65,6 +65,12 @@ endmodule
 
 // you need to create the code that drives this.  I suggest you check the class example 
 // at https://github.com/ntmoore/phys332_fall21/blob/main/10-13-2bit-adder.v 
+// operation is binary add:
+//          a3  a2  a1  a0 
+//      +   b3  b2  b1  b0 
+//      +   0   0   0   c_in 
+// = c_out  s3  s2  s1  s0
+//
 module add_4_bits fa(
     input a3,
     input a2,
