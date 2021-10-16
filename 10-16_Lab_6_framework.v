@@ -56,7 +56,7 @@ module fulladder(
     input a,
     input b, 
     input c_in,
-    output c_out
+    output c_out,
     output sum
     );
     assign c_out = (a & b) | (a & c_in) | (b & c_in);
