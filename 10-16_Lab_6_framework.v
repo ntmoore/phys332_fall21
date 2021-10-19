@@ -71,7 +71,7 @@ endmodule
 //      +   0   0   0   c_in 
 // = c_out  s3  s2  s1  s0
 //
-module add_4_bits fa(
+module add_4_bits(
     input a3,
     input a2,
     input a1,
@@ -94,7 +94,7 @@ endmodule
 // output is the 7-segment display digits da,db,dc,dd,de,df,dg
 // reminder, display digits are active-LOW
 // one approach is to generate 7 karnaugh maps
-module generate_7seg_bits gen1(
+module generate_7seg_bits(
     input s3,
     input s2,
     input s1,
