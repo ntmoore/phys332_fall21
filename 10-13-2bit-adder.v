@@ -13,7 +13,7 @@ endmodule
         
 module two_bit_adder(
     input [1:0] a,
-    input [1:0 b,
+    input [1:0] b,
     output [2:0] sum
     );
 
@@ -39,9 +39,9 @@ module fulladder(
     input a,
     input b,
     input c_in,
-    output c_out
+    output c_out,
     output sum
     );
     assign c_out = (a & b) | (a & c_in) | (b & c_in);
-    assign sum = (~a & ~b & c) | (~a & b & ~c) | (a & b & c) | (a & ~b & ~c);
+    assign sum = (~a & ~b & c_in) | (~a & b & ~c_in) | (a & b & c_in) | (a & ~b & ~c_in);
 endmodule
