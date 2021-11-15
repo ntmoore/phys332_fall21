@@ -132,8 +132,22 @@ module clk_10Hz_100ms(
     output reg outgoing_CLK
     );
     
-    always @ (posedge incoming_CLK100MHZ) begin
+    // creates 10HZ clock from a 100MHZ clock
+    // 10HZ clock has a period of 0.1 second = 100ms
+    // 100MHz / 10Hz => (100 * (1000) * (1000)) / 10 = 10,000,000 cycles
+    // log2(10,000,000) = 23.2, so 24 bits needed for counter
+    reg [23:0] ctr;
     
+    always @ (posedge incoming_CLK100MHZ) begin
+        if (ctr == 4999999) begin
+            outgoing_CLK <= 1'b1;
+            ctr <= ctr + 1;            
+        end else if (ctr == 9999999) begin
+            outgoing_CLK <= 1'b0;
+            ctr <= 0;
+        end else begin
+            ctr <= ctr + 1;
+        end
     end
 endmodule
 
