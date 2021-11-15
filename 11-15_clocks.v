@@ -28,7 +28,7 @@ module clk_50MHz_20ns(
     // 100MHZ is 10ns cycles.  
     // I want 50MHz output, 20ns cycles
     //
-    reg [???] ctr=0;
+    reg [2:0] ctr=0; //????
     
     // is this correct?  Doesn't seem quite right
     always @ (posedge incoming_CLK100MHZ) begin
@@ -52,7 +52,7 @@ module clk_1kHz_ims(
     // 100MHZ is 10ns cycles.  
     // I want 1kHz output, 1ms cycles
     //
-    reg [???] ctr=0;
+    reg [30:0] ctr=0; // ???
     
     // is this correct?  Doesn't seem quite right
     always @ (posedge incoming_CLK100MHZ) begin
@@ -65,5 +65,84 @@ module clk_1kHz_ims(
         end else begin
             ctr <= ctr + 1;
         end         
+    end
+
+module clk_10MHz_100ns(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
+    end
+endmodule
+
+module clk_1MHz_1us(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
+    end
+endmodule
+
+module clk_100kHz_10us(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
+    end
+endmodule
+
+module clk_10kHz_100us(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
+    end
+endmodule
+
+module clk_1kHz_1ms(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
+    end
+endmodule
+    
+module clk_100Hz_10ms(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
+    end
+endmodule
+
+module clk_10Hz_100ms(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
+    end
+endmodule
+
+module clk_1Hz_1000ms(
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+    
     end
 endmodule
