@@ -105,23 +105,51 @@ module clk_10kHz_100us(
     end
 endmodule
 
+// creates 1000 Hz clock from a 100 MHz clock 
+// 1000 Hz clock has a period of 0.001 seconds, which is equal to 1ms
+// 100 MHz / 1000 Hz = 100 * 10^6 / 1000 = 100,000 cycles
+// log_2(100,000) = 16.61, so 17 bits are needed for the counter
 module clk_1kHz_1ms(
     input incoming_CLK100MHZ,
     output reg outgoing_CLK
     );
+   
+    reg[16:0] ctr=0;
     
     always @ (posedge incoming_CLK100MHZ) begin
-    
+        if (ctr == 49_999) begin
+            outgoing_CLK <= 1'b1;
+            ctr <= ctr + 1;            
+        end else if (ctr == 99_999) begin
+            outgoing_CLK <= 1'b0;
+            ctr <= 0;
+        end else begin
+            ctr <= ctr + 1;
+        end
     end
 endmodule
     
+// creates 100 Hz clock from a 100 MHz clock 
+// 100 Hz clock has a period of 0.01 seconds, which is equal to 10ms
+// 100 MHz / 100 Hz = 100 * 10^6 / 100 = 1,000,000 cycles
+// log_2(1,000,000) = 19.93, so 20 bits are needed for the counter
 module clk_100Hz_10ms(
     input incoming_CLK100MHZ,
     output reg outgoing_CLK
     );
     
-    always @ (posedge incoming_CLK100MHZ) begin
+    reg[19:0] ctr=0;
     
+    always @ (posedge incoming_CLK100MHZ) begin       
+        if (ctr == 499_999) begin
+            outgoing_CLK <= 1'b1;
+            ctr <= ctr + 1;            
+            end else if (ctr == 999_999) begin
+            outgoing_CLK <= 1'b0;
+            ctr <= 0;
+        end else begin
+            ctr <= ctr + 1;
+        end
     end
 endmodule
 
