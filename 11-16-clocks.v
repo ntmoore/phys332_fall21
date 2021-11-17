@@ -1,7 +1,6 @@
 /* 
 This library contains a bunch of modules that implement clocks at different speeds.  Sample implementation is
 given at the top of the module.
-
 Assumed: incoming clock is 100MHz on a Digilent Basys3 or Nexys4DDR board
 Nathan Moore, 2021-11-16
 */
