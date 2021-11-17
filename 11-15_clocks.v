@@ -39,32 +39,6 @@ module clk_50MHz_20ns(
     end
 endmodule
 
-module clk_1kHz_ims(
-    input incoming_CLK100MHZ,
-    output reg outgoing_CLK
-    );
-    
-    // 100MHZ is 10ns cycles.  
-    // I want 1kHz output, 1ms cycles
-    // 1ms = 1_000 us = 1_000_000 ns, so # of cycles needed is
-    // 1_000_000 ns / 10 ns = 100k cycles
-    // 2^17 = 131072
-    reg [16:0] ctr=0;
-    
-    always @ (posedge incoming_CLK100MHZ) begin
-        if(ctr==49_999) begin
-            outgoing_CLK <= 1'b0;
-            ctr <= ctr + 1;            
-        end else if(ctr==99_999) begin
-            outgoing_CLK <= 1'b1;
-            ctr <= 0;
-        end else begin
-            ctr <= ctr + 1;
-        end         
-    end
-endmodule
-
-
 module clk_10MHz_100ns(
     input incoming_CLK100MHZ,
     output reg outgoing_CLK
