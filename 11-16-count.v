@@ -1,5 +1,9 @@
 `timescale 1ns / 1ps
 
+// ISSUES!!!
+// 1. currently counts 0-F.  Would be nice to count up to FF or 12.  How can I implement this?
+// 2. display is really bright.  How can I dim it?
+//
 // this is the top level module
 module implement_count_up_and_display(
     input CLK100MHZ,
