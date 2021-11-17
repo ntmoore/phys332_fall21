@@ -10,8 +10,7 @@ module implement_count_up_and_display(
 
     // set up the 1HZ clock
     wire CLK_1HZ;
-    clk_1Hz_1000ms gate1(
- CLK100MHZ, CLK_1HZ);
+    clk_1Hz_1000ms gate1( CLK100MHZ, CLK_1HZ);
 
     // set up a counter
     wire [7:0] sum;
@@ -23,7 +22,7 @@ module implement_count_up_and_display(
     // set up the display
     assign AN[7:0] = 8'b1111_1110;
     assign DP = 1'b1;
-    generate_7seg_bits gate3(sum[7:4], CA,CB,CC,CD,CE,CF,CG);
+    generate_7seg_bits gate3(sum[3], sum[2], sum[1], sum[0], CA,CB,CC,CD,CE,CF,CG);
 
 endmodule
 
@@ -50,6 +49,7 @@ module generate_7seg_bits(
     input s2,
     input s1,
     input s0, 
+    
     output da,
     output db,
     output dc,
