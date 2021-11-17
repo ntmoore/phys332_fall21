@@ -1,9 +1,5 @@
 `timescale 1ns / 1ps
 
-// ISSUES!!!
-// 1. currently counts 0-F.  Would be nice to count up to FF or 12.  How can I implement this?
-// 2. display is really bright.  How can I dim it?
-//
 // this is the top level module
 module implement_count_up_and_display(
     input CLK100MHZ,
@@ -23,8 +19,13 @@ module implement_count_up_and_display(
     assign LED[7:0] = sum[7:0];
     assign LED[8] = CLK_1HZ;
     
+    // dim the 7-segs with a kHz clock
+    clk_1kHz_1ms gate4(
+ CLK100MHZ,CLK_1kHz);
+    
     // set up the display
-    assign AN[7:0] = 8'b1111_1110;
+    assign AN[7:1] = 8'b1111_110; // full brightness
+    assign AN[0] = CLK_1kHz;    // 50% power
     assign DP = 1'b1;
     generate_7seg_bits gate3(sum[3], sum[2], sum[1], sum[0], CA,CB,CC,CD,CE,CF,CG);
 
