@@ -1,7 +1,7 @@
 module implement_clocks(
     input CLK100MHZ,
     output [7:8] JA,
-    output [1:0] LED,
+    output [1:0] LED
     );
     
     wire CLK_100HZ;    
