@@ -175,6 +175,63 @@ module clk_10Hz_100ms(
     end
 endmodule
 
+module clk_2kHz_500us( 
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    // creates 2kHZ clock from a 100MHZ clock
+    // 2kHz clock has a period of 500us = 500_000ns
+    // 100MHz has period of 10ns 
+    // need log2(500_000ns/10ns = 50_000 cycles) = 15.6 so 16 bits
+    reg[15:0] ctr;
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+        if (ctr == 24_999) begin
+            outgoing_CLK <= 1'b1;
+            ctr <= ctr + 1;            
+        end
+        else if (ctr == 49_999) begin
+            outgoing_CLK <= 1'b0;
+            ctr <= 0;
+        end
+        else begin
+            ctr <= ctr + 1;
+        end
+    end
+endmodule
+
+module clk_4kHz_250us( 
+    input incoming_CLK100MHZ,
+    output reg outgoing_CLK
+    );
+    
+    // creates 4kHZ clock from a 100MHZ clock
+    // 4kHz clock has a period of 250us = 250_000ns
+    // 100MHz has period of 10ns 
+    // need log2(250_000ns/10ns = 25_000 cycles) = 14.6 so 15 bits
+    reg[14:0] ctr;
+    
+    always @ (posedge incoming_CLK100MHZ) begin
+        if (ctr == 12_499) begin
+            outgoing_CLK <= 1'b1;
+            ctr <= ctr + 1;            
+        end
+        else if (ctr == 24_999) begin
+            outgoing_CLK <= 1'b0;
+            ctr <= 0;
+        end
+        else begin
+            ctr <= ctr + 1;
+        end
+    end
+endmodule
+
+
+
+
+
+
 module clk_1Hz_1000ms(
     input incoming_CLK100MHZ,
     output reg outgoing_CLK
