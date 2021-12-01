@@ -20,7 +20,7 @@ module implement_count_up_and_display(
     wire button, clear;
     assign button = BTNL;
     assign clear = BTNR;
-    count_button_push gate2( CLK100MHZ, button, clear, sum[31:0]);
+    count_button_push gate2( CLK_1KHZ, button, clear, sum[31:0]);
     
     assign LED[7:0] = sum[7:0];
     assign LED[8] = CLK_1HZ;
